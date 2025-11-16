@@ -14,15 +14,15 @@ public class CustomerSpawner : MonoBehaviour
     private float customerSpacing = 150f;
     private List<GameObject> customers = new List<GameObject>();
 
-    //void Update()
-    //{
-        //timer += Time.deltaTime;
-        //if (timer >= spawnInterval)
-        //{
-        //    SpawnCustomer();
-        //    timer = 0f;
-        //}
-    //}
+    /*void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= spawnInterval)
+        {
+            SpawnCustomer();
+            timer = 0f;
+        }
+    }*/
 
     private void SpawnCustomer()
     {
