@@ -22,6 +22,6 @@ public class Customer : MonoBehaviour
         orders.Add(randomOrder);
     }
     public List<Order> getOrder() => orders;
-    public float getPatience() => basePatience + (orders.Count - 1) * 0.5f;
+    public float getPatience() => basePatience * (1 + (orders.Count - 1) * 0.5f);
 
 }

@@ -12,6 +12,7 @@ public class CustomerSpawner : MonoBehaviour
     private float timer = 0f;
     private float startX = 0f;
     private float customerSpacing = 150f;
+    private List<GameObject> customers = new List<GameObject>();
 
     void Update()
     {
@@ -28,6 +29,7 @@ public class CustomerSpawner : MonoBehaviour
         GameObject newCustomer = Instantiate(customerPrefab, canvas);
         RectTransform rt = newCustomer.GetComponent<RectTransform>();
         customerCount++;
+        customers.Add(newCustomer);
 
         //Spawn customers in a line
         if (rt != null)
@@ -46,5 +48,28 @@ public class CustomerSpawner : MonoBehaviour
         }
 
     }
+    public void DecrementCustomer()
+    {
+        if (customerCount <= 0)
+        {
+            Debug.Log("No customers to delete.");
+            return;
+        }
+            
+        customerCount--;
+        GameObject servedCustomer = customers[0];
+        customers.Remove(servedCustomer);
+        List<Order> order = servedCustomer.GetComponent<Customer>().getOrder();
+        Debug.Log("Served customer with order " + string.Join(", ", order));
+        Destroy(servedCustomer);
+        
+        foreach (GameObject customer in customers)
+        {
+            RectTransform rt = customer.GetComponent<RectTransform>();
+            if (rt != null)
+                rt.anchoredPosition = new Vector2(rt.anchoredPosition.x - customerSpacing, rt.anchoredPosition.y);
+        }
+    }
 }
+
 
