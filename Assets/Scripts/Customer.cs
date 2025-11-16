@@ -1,16 +1,27 @@
+using System.Collections.Generic;
 using UnityEngine;
+public enum Order
+{
+    Worm,
+    Fish,
+    Food3,
+    Food4,
+    Food5
+}
 
+[System.Serializable]
 public class Customer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public List<Order> orders = new List<Order>();
+    public const float basePatience = 10f;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        //Add a random order to the list, 1 for now
+        Order randomOrder = (Order)Random.Range(0, System.Enum.GetValues(typeof(Order)).Length);
+        orders.Add(randomOrder);
     }
+    public List<Order> getOrder() => orders;
+    public float getPatience() => basePatience + (orders.Count - 1) * 0.5f;
+
 }

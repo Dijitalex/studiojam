@@ -36,11 +36,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         Vector3 itemPos = transform.position;
-        if (RectTransformUtility.RectangleContainsScreenPoint(dropAreaRect, itemPos, eventData.pressEventCamera))
-        {
-            return;
-        }
-        else
+        if (!RectTransformUtility.RectangleContainsScreenPoint(dropAreaRect, itemPos, eventData.pressEventCamera))
         {
             transform.position = startpos;
         }
