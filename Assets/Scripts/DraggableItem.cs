@@ -27,12 +27,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-<<<<<<< Updated upstream
-        Vector3 itemPos = transform.position;
-        if (!RectTransformUtility.RectangleContainsScreenPoint(dropAreaRect, itemPos, eventData.pressEventCamera))
-        {
-            transform.position = startpos;
-=======
         Vector2 uiPos = transform.position;
 
         if (RectTransformUtility.RectangleContainsScreenPoint(dropAreaRect, uiPos, eventData.pressEventCamera))
@@ -41,7 +35,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         worldPos.z = 0;
 
         Instantiate(foodPrefab, worldPos, Quaternion.identity);
->>>>>>> Stashed changes
         }
 
         transform.position = startpos;
