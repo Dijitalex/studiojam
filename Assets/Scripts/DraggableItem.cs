@@ -1,23 +1,44 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public RectTransform trayRect; 
     public RectTransform dropAreaRect; 
-    public GameObject foodPrefab; 
+    public GameObject foodPrefab;
 
-    private Vector3 startpos;
+    private Vector3 trayHomePos;
     private Canvas parentCanvas;
+
+    private bool dragging = false;
 
     void Start()
     {
         parentCanvas = GetComponentInParent<Canvas>();
-        startpos = transform.position;
+        trayHomePos = transform.position;
+    }
+
+    void Update()
+    {
+        Camera cam = parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay
+            ? null : parentCanvas.worldCamera;
+            
+        if (!dragging)
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(trayRect, Input.mousePosition, cam))
+            {
+                transform.position = Input.mousePosition;
+            }
+            else
+            {
+                transform.position = trayHomePos;
+            }
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        dragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -27,16 +48,17 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Vector2 uiPos = transform.position;
+        dragging = false; 
 
-        if (RectTransformUtility.RectangleContainsScreenPoint(dropAreaRect, uiPos, eventData.pressEventCamera))
+        Camera cam = parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay
+            ? null : parentCanvas.worldCamera;
+
+        if (RectTransformUtility.RectangleContainsScreenPoint(dropAreaRect, eventData.position, cam))
         {
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
-        worldPos.z = 0;
-
-        Instantiate(foodPrefab, worldPos, Quaternion.identity);
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
+            worldPos.z = 0;
+            Instantiate(foodPrefab, worldPos, Quaternion.identity);
         }
-
-        transform.position = startpos;
+        transform.position = trayHomePos;
     }
 }
