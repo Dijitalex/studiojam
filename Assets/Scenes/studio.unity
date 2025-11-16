@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2a51eaf14488042bde5a55c296344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trayRect: {fileID: 1053409499}
   dropAreaRect: {fileID: 689671422}
   foodPrefab: {fileID: 6600300704920647572, guid: afd82cb39b52644dba7145fc649127fb, type: 3}
 --- !u!114 &305668297
@@ -395,6 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2a51eaf14488042bde5a55c296344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trayRect: {fileID: 1020628809}
   dropAreaRect: {fileID: 689671422}
   foodPrefab: {fileID: 6600300704920647572, guid: aebbbae60a4684398bf7d370240e8bb1, type: 3}
 --- !u!114 &483522427
@@ -485,6 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2a51eaf14488042bde5a55c296344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trayRect: {fileID: 1089445166}
   dropAreaRect: {fileID: 689671422}
   foodPrefab: {fileID: 6600300704920647572, guid: fa47ade09b1584572a08dc70b095653d, type: 3}
 --- !u!114 &572983899
@@ -575,6 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2a51eaf14488042bde5a55c296344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trayRect: {fileID: 1544267678}
   dropAreaRect: {fileID: 689671422}
   foodPrefab: {fileID: 6600300704920647572, guid: 223fd17e4e1eb409cbbedeaf20ff3073, type: 3}
 --- !u!114 &616697977
@@ -1052,7 +1056,6 @@ GameObject:
   - component: {fileID: 1020628809}
   - component: {fileID: 1020628811}
   - component: {fileID: 1020628810}
-  - component: {fileID: 1020628812}
   m_Layer: 5
   m_Name: Tray4
   m_TagString: Untagged
@@ -1118,19 +1121,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020628808}
   m_CullTransparentMesh: 1
---- !u!114 &1020628812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020628808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0c1d6d31ff846c88421208016ae61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallFoodUI: {fileID: 483522424}
 --- !u!1 &1053409498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,7 +1132,6 @@ GameObject:
   - component: {fileID: 1053409499}
   - component: {fileID: 1053409501}
   - component: {fileID: 1053409500}
-  - component: {fileID: 1053409502}
   m_Layer: 5
   m_Name: Tray3
   m_TagString: Untagged
@@ -1208,19 +1197,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053409498}
   m_CullTransparentMesh: 1
---- !u!114 &1053409502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053409498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0c1d6d31ff846c88421208016ae61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallFoodUI: {fileID: 305668294}
 --- !u!1 &1089445165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,7 +1208,6 @@ GameObject:
   - component: {fileID: 1089445166}
   - component: {fileID: 1089445168}
   - component: {fileID: 1089445167}
-  - component: {fileID: 1089445169}
   m_Layer: 5
   m_Name: Tray1
   m_TagString: Untagged
@@ -1298,19 +1273,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089445165}
   m_CullTransparentMesh: 1
---- !u!114 &1089445169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089445165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0c1d6d31ff846c88421208016ae61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallFoodUI: {fileID: 572983896}
 --- !u!1 &1104801220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1284,6 @@ GameObject:
   - component: {fileID: 1104801221}
   - component: {fileID: 1104801223}
   - component: {fileID: 1104801222}
-  - component: {fileID: 1104801224}
   m_Layer: 5
   m_Name: Tray2
   m_TagString: Untagged
@@ -1388,19 +1349,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104801220}
   m_CullTransparentMesh: 1
---- !u!114 &1104801224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104801220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0c1d6d31ff846c88421208016ae61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallFoodUI: {fileID: 1233219276}
 --- !u!1 &1233219276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2a51eaf14488042bde5a55c296344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trayRect: {fileID: 1104801221}
   dropAreaRect: {fileID: 689671422}
   foodPrefab: {fileID: 6600300704920647572, guid: dd402da0d67df432b8c07bd4001949d6, type: 3}
 --- !u!114 &1233219279
@@ -1674,6 +1623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2a51eaf14488042bde5a55c296344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trayRect: {fileID: 1707300227}
   dropAreaRect: {fileID: 689671422}
   foodPrefab: {fileID: 6600300704920647572, guid: 2ea2f41351a6f463cb1cc6a0106d876e, type: 3}
 --- !u!114 &1368949358
@@ -1725,7 +1675,6 @@ GameObject:
   - component: {fileID: 1544267678}
   - component: {fileID: 1544267680}
   - component: {fileID: 1544267679}
-  - component: {fileID: 1544267681}
   m_Layer: 5
   m_Name: Tray5
   m_TagString: Untagged
@@ -1791,19 +1740,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544267677}
   m_CullTransparentMesh: 1
---- !u!114 &1544267681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544267677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0c1d6d31ff846c88421208016ae61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallFoodUI: {fileID: 616697974}
 --- !u!1 &1707300226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,7 +1751,6 @@ GameObject:
   - component: {fileID: 1707300227}
   - component: {fileID: 1707300229}
   - component: {fileID: 1707300228}
-  - component: {fileID: 1707300230}
   m_Layer: 5
   m_Name: Tray6
   m_TagString: Untagged
@@ -1881,19 +1816,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707300226}
   m_CullTransparentMesh: 1
---- !u!114 &1707300230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707300226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0c1d6d31ff846c88421208016ae61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallFoodUI: {fileID: 1368949355}
 --- !u!1 &1749894516
 GameObject:
   m_ObjectHideFlags: 0
