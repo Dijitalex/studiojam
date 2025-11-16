@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class CustomerSpawner : MonoBehaviour
     private float customerSpacing = 150f;
     private List<GameObject> customers = new List<GameObject>();
 
-    /*void Update()
+    void Update()
     {
         timer += Time.deltaTime;
         if (timer >= spawnInterval)
@@ -22,7 +23,7 @@ public class CustomerSpawner : MonoBehaviour
             SpawnCustomer();
             timer = 0f;
         }
-    }*/
+    }
 
     private void SpawnCustomer()
     {
@@ -31,9 +32,12 @@ public class CustomerSpawner : MonoBehaviour
         customerCount++;
         customers.Add(newCustomer);
 
-        //Spawn customers in a line
-        if (rt != null)
-            rt.anchoredPosition = new Vector2(startX + customerCount * customerSpacing, rt.anchoredPosition.y);
+        Vector2 targetPos = new Vector2(startX + customerCount * customerSpacing, rt.anchoredPosition.y);
+        Vector2 startPos = targetPos + new Vector2(150f, 0);
+
+        rt.anchoredPosition = startPos;
+
+        StartCoroutine(SlideAndFadeIn(rt, targetPos));
 
         Customer customerScript = newCustomer.GetComponent<Customer>();
         if (customerScript != null)
@@ -69,7 +73,33 @@ public class CustomerSpawner : MonoBehaviour
             if (rt != null)
                 rt.anchoredPosition = new Vector2(rt.anchoredPosition.x - customerSpacing, rt.anchoredPosition.y);
         }
+
+
     }
+
+    public IEnumerator SlideAndFadeIn(RectTransform rt, Vector2 targetPos, float duration = 0.5f)
+    {
+        CanvasGroup cg = rt.GetComponent<CanvasGroup>();
+
+        Vector2 startPos = rt.anchoredPosition;
+        float elapsed = 0f;
+        cg.alpha = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            rt.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
+            cg.alpha = t;
+
+            yield return null;
+        }
+
+        rt.anchoredPosition = targetPos;
+        cg.alpha = 1f;
+    }
+
 }
 
 

@@ -38,7 +38,7 @@ public class Customer : MonoBehaviour
         };
 
         //Generate 1-3 items for customer order
-        int numOrders = Random.Range(1, 3);
+        int numOrders = Random.Range(1, 4);
         for (int i = 0; i < numOrders; i++)
         {
             Order randomOrder = (Order)Random.Range(0, System.Enum.GetValues(typeof(Order)).Length);
