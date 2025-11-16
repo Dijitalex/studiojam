@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public RectTransform dropAreaRect; 
+    public GameObject foodPrefab; 
+
     private Vector3 startpos;
     private Canvas parentCanvas;
-    public RectTransform dropAreaRect;
 
-    private void Start()
+    void Start()
     {
         parentCanvas = GetComponentInParent<Canvas>();
         startpos = transform.position;
@@ -16,29 +18,32 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 pos;
-
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            parentCanvas.transform as RectTransform,
-            eventData.position,
-            eventData.pressEventCamera,
-            out pos
-        );
-
-        transform.position = parentCanvas.transform.TransformPoint(pos);
+        transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+<<<<<<< Updated upstream
         Vector3 itemPos = transform.position;
         if (!RectTransformUtility.RectangleContainsScreenPoint(dropAreaRect, itemPos, eventData.pressEventCamera))
         {
             transform.position = startpos;
+=======
+        Vector2 uiPos = transform.position;
+
+        if (RectTransformUtility.RectangleContainsScreenPoint(dropAreaRect, uiPos, eventData.pressEventCamera))
+        {
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
+        worldPos.z = 0;
+
+        Instantiate(foodPrefab, worldPos, Quaternion.identity);
+>>>>>>> Stashed changes
         }
+
+        transform.position = startpos;
     }
 }
