@@ -12,6 +12,7 @@ public class CustomerSpawner : MonoBehaviour
     private int customerCount = 0;
     private float timer = 0f;
     private float startX = 0f;
+    private float startY = -150f;
     private float customerSpacing = 150f;
     private List<GameObject> customers = new List<GameObject>();
 
@@ -32,7 +33,7 @@ public class CustomerSpawner : MonoBehaviour
         customerCount++;
         customers.Add(newCustomer);
 
-        Vector2 targetPos = new Vector2(startX + customerCount * customerSpacing, rt.anchoredPosition.y);
+        Vector2 targetPos = new Vector2(startX + customerCount * customerSpacing, startY);
         Vector2 startPos = targetPos + new Vector2(150f, 0);
 
         rt.anchoredPosition = startPos;
