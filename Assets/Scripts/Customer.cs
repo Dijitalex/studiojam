@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 public enum Order
 {
@@ -17,6 +18,8 @@ public class Customer : MonoBehaviour
     public List<RectTransform> orderImages; //3 pre-set icons to match food sprites to
     private Dictionary<Order, Sprite> spriteMap;
 
+    public Image patienceBar;
+
     //Change as foods are added
     [SerializeField] private Sprite food1Sprite;
     [SerializeField] private Sprite food2Sprite; 
@@ -26,6 +29,8 @@ public class Customer : MonoBehaviour
     [SerializeField] private Sprite food6Sprite;
 
     public const float basePatience = 10f;
+    private float currentPatience;
+    private bool served = false;
     public List<Order> getOrder() => orders;
     public float getPatience() => basePatience * (1 + (orders.Count - 1) * 0.5f);
     private void Awake()
@@ -49,6 +54,35 @@ public class Customer : MonoBehaviour
         }
         LayoutOrder();
 
+        currentPatience = getPatience();
+        UpdatePatienceBar();
+    }
+
+    private void Update()
+    {
+        if (served) return;
+        currentPatience -= Time.deltaTime;
+
+        UpdatePatienceBar();
+
+        if (currentPatience <= 0f)
+        {
+            CustomerSpawner.Instance.RemoveCustomer(this);
+            Debug.Log("Customer " + gameObject.name + "left angry!");
+            served = true;
+        }
+    }
+
+    private void UpdatePatienceBar()
+    {
+        float percentage = Mathf.Clamp01(currentPatience / getPatience());
+        patienceBar.fillAmount = percentage;
+
+        //Color transition
+        if (percentage > 0.5f)
+            patienceBar.color = Color.Lerp(Color.yellow, Color.green, percentage);
+        else
+            patienceBar.color = Color.Lerp(Color.red, Color.yellow, percentage);
     }
 
     public void LayoutOrder()

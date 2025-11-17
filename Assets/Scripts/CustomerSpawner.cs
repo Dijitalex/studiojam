@@ -5,22 +5,38 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
+    public static CustomerSpawner Instance { get; private set; }
+
     public GameObject customerPrefab;
     public Transform canvas;
     [SerializeField] public float spawnInterval = 5f;
 
     public int customerCount = 0;
+    public int maxCustomerCount = 5;
     [SerializeField] private float timer = 0f;
     [SerializeField] private float startX = 0f;
     [SerializeField] private float startY = -150f;
     [SerializeField] private float customerSpacing = 150f;
     public List<GameObject> customers = new List<GameObject>();
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     void Update()
     {
         timer += Time.deltaTime;
         if (timer >= spawnInterval)
         {
+            if (customerCount == maxCustomerCount)
+                return;
             SpawnCustomer();
             timer = 0f;
         }
@@ -53,7 +69,7 @@ public class CustomerSpawner : MonoBehaviour
         }
 
     }
-    public void DecrementCustomer()
+    public void DecrementCustomer(int index = 0)
     {
         if (customerCount <= 0)
         {
@@ -62,20 +78,30 @@ public class CustomerSpawner : MonoBehaviour
         }
             
         customerCount--;
-        GameObject servedCustomer = customers[0];
+        GameObject servedCustomer = customers[index];
         customers.Remove(servedCustomer);
         List<Order> order = servedCustomer.GetComponent<Customer>().getOrder();
         Debug.Log("Served customer with order " + string.Join(", ", order));
         Destroy(servedCustomer);
         
-        foreach (GameObject customer in customers)
+        for (int i = index; i < customerCount; i++)
         {
+            GameObject customer = customers[i];
             RectTransform rt = customer.GetComponent<RectTransform>();
             if (rt != null)
                 rt.anchoredPosition = new Vector2(rt.anchoredPosition.x - customerSpacing, rt.anchoredPosition.y);
         }
+    }
+    public void RemoveCustomer(Customer customer)
+    {
+        if (!customers.Contains(customer.gameObject))
+        {
+            Debug.Log("Tried to remove customer but they aren't in the list.");
+            return;
+        }
 
-
+        int index = customers.IndexOf(customer.gameObject);
+        DecrementCustomer(index);
     }
 
     public IEnumerator SlideAndFadeIn(RectTransform rt, Vector2 targetPos, float duration = 0.5f)
