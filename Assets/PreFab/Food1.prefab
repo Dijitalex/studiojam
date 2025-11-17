@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.68235296, g: 0.7176471, b: 0.99607843, a: 1}
+  m_Color: {r: 0.56078434, g: 0.6431373, b: 0.7372549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,4 +100,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb889c7248734bd2b2abdb403c01889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 1
+  Price: 1
+  foodOrder: 0

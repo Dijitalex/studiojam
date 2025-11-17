@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum Order
 {
-    Worm,
-    Fish,
+    Food1,
+    Food2,
     Food3,
     Food4,
-    Food5
+    Food5,
+    Food6
 }
 
 [System.Serializable]
@@ -17,11 +18,12 @@ public class Customer : MonoBehaviour
     private Dictionary<Order, Sprite> spriteMap;
 
     //Change as foods are added
-    [SerializeField] private Sprite wormSprite;
-    [SerializeField] private Sprite fishSprite; 
+    [SerializeField] private Sprite food1Sprite;
+    [SerializeField] private Sprite food2Sprite; 
     [SerializeField] private Sprite food3Sprite;
     [SerializeField] private Sprite food4Sprite;
     [SerializeField] private Sprite food5Sprite;
+    [SerializeField] private Sprite food6Sprite;
 
     public const float basePatience = 10f;
     public List<Order> getOrder() => orders;
@@ -30,11 +32,12 @@ public class Customer : MonoBehaviour
     {
         spriteMap = new Dictionary<Order, Sprite>
         {
-            { Order.Worm, wormSprite },
-            { Order.Fish, fishSprite },
+            { Order.Food1, food1Sprite },
+            { Order.Food2, food2Sprite },
             { Order.Food3, food3Sprite },
             { Order.Food4, food4Sprite },
-            { Order.Food5, food5Sprite }
+            { Order.Food5, food5Sprite },
+            { Order.Food6, food6Sprite }
         };
 
         //Generate 1-3 items for customer order

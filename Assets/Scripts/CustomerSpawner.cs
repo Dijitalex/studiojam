@@ -7,14 +7,14 @@ public class CustomerSpawner : MonoBehaviour
 {
     public GameObject customerPrefab;
     public Transform canvas;
-    public float spawnInterval = 5f;
+    [SerializeField] public float spawnInterval = 5f;
 
-    private int customerCount = 0;
-    private float timer = 0f;
-    private float startX = 0f;
-    private float startY = -150f;
-    private float customerSpacing = 150f;
-    private List<GameObject> customers = new List<GameObject>();
+    public int customerCount = 0;
+    [SerializeField] private float timer = 0f;
+    [SerializeField] private float startX = 0f;
+    [SerializeField] private float startY = -150f;
+    [SerializeField] private float customerSpacing = 150f;
+    public List<GameObject> customers = new List<GameObject>();
 
     void Update()
     {
@@ -102,5 +102,4 @@ public class CustomerSpawner : MonoBehaviour
     }
 
 }
-
 
