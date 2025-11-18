@@ -908,9 +908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerPrefab:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 770666978367859815, guid: 56a0a2945e83fec4baf8bf7adc27bf40, type: 3}
   canvas: {fileID: 827370640}
   customerCount: 0
   maxCustomerCount: 5
