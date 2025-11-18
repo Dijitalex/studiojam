@@ -908,7 +908,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerPrefab:
-  - {fileID: 770666978367859815, guid: 56a0a2945e83fec4baf8bf7adc27bf40, type: 3}
+  - {fileID: 770666978367859815, guid: 5af9187deced8f14fa7cb2556ebf51e7, type: 3}
+  - {fileID: 770666978367859815, guid: 4a4cdfb69a82e9745806f6469d0c1c12, type: 3}
+  - {fileID: 770666978367859815, guid: 702934e04a7b8bc45a7a4a776e962f2d, type: 3}
+  - {fileID: 770666978367859815, guid: 1587433e062731641872df094f8b53af, type: 3}
+  - {fileID: 770666978367859815, guid: 6cc3ca2b887532b47a5bdbdc30f6b47f, type: 3}
   canvas: {fileID: 827370640}
   customerCount: 0
   maxCustomerCount: 5
