@@ -7,17 +7,24 @@ public class Transition : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-    public void LoadNextLevel1()
+    public void LoadStartMenu()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(LoadLevel("StartMenu"));
+    }
+    public void LoadCredits()
+    {
+        StartCoroutine(LoadLevel("Credits"));
+    }
+    public void LoadGame()
+    {
+        StartCoroutine(LoadLevel("MainGame1"));
     }
 
-    IEnumerator LoadLevel(int levelIndex)
+
+    IEnumerator LoadLevel(string sceneName)
     {
         transition.SetTrigger("Start");
-
         yield return new WaitForSeconds(transitionTime);
-
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(sceneName);
     }
 }

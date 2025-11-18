@@ -323,7 +323,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1706779694}
         m_TargetAssemblyTypeName: Transition, Assembly-CSharp
-        m_MethodName: LoadNextLevel1
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 1358772362}
   - component: {fileID: 1358772361}
   m_Layer: 5
-  m_Name: Credits
+  m_Name: CreditsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1706779694}
         m_TargetAssemblyTypeName: Transition, Assembly-CSharp
-        m_MethodName: LoadNextLevel1
+        m_MethodName: LoadCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
