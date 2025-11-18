@@ -17,6 +17,11 @@ public class SubmitPlate : MonoBehaviour
 
     public void Submit()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySubmit();
+        }
+        
         if (customerSpawner.customerCount <= 0)
         {
             Debug.Log("No customers to serve!");
