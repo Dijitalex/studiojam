@@ -9,7 +9,7 @@ public class Transition : MonoBehaviour
 
     public void LoadStartMenu()
     {
-        StartCoroutine(LoadLevel("StartMenu"));
+        StartCoroutine(LoadLevel("MainMenu"));
     }
     public void LoadCredits()
     {
@@ -17,7 +17,7 @@ public class Transition : MonoBehaviour
     }
     public void LoadGame()
     {
-        StartCoroutine(LoadLevel("MainGame1"));
+        StartCoroutine(LoadLevel("Difficulty 1"));
     }
 
 
@@ -26,5 +26,11 @@ public class Transition : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit Game!");
+        Application.Quit();
     }
 }

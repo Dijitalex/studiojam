@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 429047121}
   - component: {fileID: 429047120}
   - component: {fileID: 429047119}
-  - component: {fileID: 429047123}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -226,18 +225,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &429047123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429047118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146a6bfbf3bfa403d8aec5020439686b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &607823003
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,8 +516,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 429047123}
-        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+      - m_Target: {fileID: 1706779694}
+        m_TargetAssemblyTypeName: Transition, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:

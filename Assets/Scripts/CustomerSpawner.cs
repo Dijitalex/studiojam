@@ -72,8 +72,6 @@ public class CustomerSpawner : MonoBehaviour
 
             if (orderText != null)
                 orderText.text = string.Join(", ", orders);
-
-            Debug.Log("Spawned customer with order: " + string.Join(", ", orders));
         }
 
     }
@@ -89,7 +87,6 @@ public class CustomerSpawner : MonoBehaviour
         GameObject servedCustomer = customers[index];
         customers.Remove(servedCustomer);
         List<Order> order = servedCustomer.GetComponent<Customer>().getOrder();
-        Debug.Log("Served customer with order " + string.Join(", ", order));
         Destroy(servedCustomer);
         
         for (int i = index; i < customerCount; i++)

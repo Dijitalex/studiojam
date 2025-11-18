@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SubmitPlate : MonoBehaviour
 {
@@ -53,17 +54,42 @@ public class SubmitPlate : MonoBehaviour
             }
             
             totalMoney += plateTotal;
-            Debug.Log("Order correct! Earned: " + plateTotal);
         }
         else
         {
             totalMoney -= 10;
-            Debug.Log("Order wrong! Lost 10 $");
         }
 
         UpdateMoneyUI();
         clearPlate.ClearFood();
         customerSpawner.DecrementCustomer();
+        CheckLevelProgress();
+    }
+
+    private void CheckLevelProgress()
+    {
+        if (totalMoney < 0)
+        {
+            SceneManager.LoadScene(4);
+            return;
+        }
+
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "Difficulty 1" && totalMoney >= 10)
+        {
+            totalMoney = 0;
+            SceneManager.LoadScene(2);
+        }
+        else if (currentScene == "Difficulty 2" && totalMoney >= 50)
+        {
+            totalMoney = 0;
+            SceneManager.LoadScene(3);
+        }
+        else if (currentScene == "Level3" && totalMoney >= 100)
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 
     private bool CheckOrderMatch(List<Order> required, List<Order> provided)
