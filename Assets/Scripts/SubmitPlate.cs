@@ -88,6 +88,6 @@ public class SubmitPlate : MonoBehaviour
 
     void UpdateMoneyUI()
     {
-        moneyText.text = "Money: " + totalMoney;
+        moneyText.text = "$ " + totalMoney;
     }
 }

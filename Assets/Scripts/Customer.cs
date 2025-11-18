@@ -90,10 +90,20 @@ public class Customer : MonoBehaviour
         foreach (var icon in orderImages)
             icon.gameObject.SetActive(false);
 
+        for (int i = 0; i < orders.Count; i++)
+        {
+            Image img = orderImages[i].GetComponent<Image>();
+            img.sprite = spriteMap[orders[i]];
+            img.color = Color.white;
+
+            if (orders[i] == Order.Food1) //Worm
+                img.rectTransform.sizeDelta = new Vector2(60, 60);
+        }
+
         if (orders.Count == 1)
         {
-            //Change sprite
             orderImages[0].anchoredPosition = Vector2.zero;
+            orderImages[0].localScale = Vector3.one * 2f;
             orderImages[0].gameObject.SetActive(true);
         }
         else if (orders.Count == 2)
@@ -101,11 +111,18 @@ public class Customer : MonoBehaviour
             orderImages[0].anchoredPosition = new Vector2(-25, 0);
             orderImages[1].anchoredPosition = new Vector2(25, 0);
 
+            orderImages[0].localScale = Vector3.one * 1.3f;
+            orderImages[1].localScale = Vector3.one * 1.3f;
+
             orderImages[0].gameObject.SetActive(true);
             orderImages[1].gameObject.SetActive(true);
         }
         else if (orders.Count == 3)
         {
+            orderImages[0].localScale = Vector3.one * 1.3f;
+            orderImages[1].localScale = Vector3.one * 1.3f;
+            orderImages[2].localScale = Vector3.one * 1.3f;
+
             orderImages[0].gameObject.SetActive(true);
             orderImages[1].gameObject.SetActive(true);
             orderImages[2].gameObject.SetActive(true);

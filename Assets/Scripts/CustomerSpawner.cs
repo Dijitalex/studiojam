@@ -16,7 +16,7 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] private float timer = 0f;
     [SerializeField] private float startX = 0f;
     [SerializeField] private float startY = -150f;
-    [SerializeField] private float customerSpacing = 150f;
+    [SerializeField] private float customerSpacing = 170f;
     public List<GameObject> customers = new List<GameObject>();
 
     private void Awake()
