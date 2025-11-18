@@ -256,9 +256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 590861210}
   sfxSource: {fileID: 1937726671}
-  background: {fileID: 0}
+  background: {fileID: 8300000, guid: 7304a275de6863b4584b4e18b6a5c243, type: 3}
   submit: {fileID: 8300000, guid: a080b9958aa38f0478a7abfa93f1f259, type: 3}
-  win: {fileID: 0}
+  win: {fileID: 8300000, guid: aa3c803d5197d494d9d744209134abaf, type: 3}
   lose: {fileID: 8300000, guid: 0dd32872bd6cce245902f010880dae13, type: 3}
   buttonClick: {fileID: 8300000, guid: ca6cbf59858ee3541b0b36362d1e65b7, type: 3}
 --- !u!4 &513137135
