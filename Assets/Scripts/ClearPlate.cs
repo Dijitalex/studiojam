@@ -7,7 +7,15 @@ public class ClearPlate : MonoBehaviour
         GameObject[] foods = GameObject.FindGameObjectsWithTag("Food");
 
         foreach (GameObject f in foods)
-            Destroy(f);
+        {
+            foreach (var comp in f.GetComponents<MonoBehaviour>())
+            {
+                comp.enabled = false;
+            }
+
+            Destroy(f); 
+        }
     }
+
 
 }

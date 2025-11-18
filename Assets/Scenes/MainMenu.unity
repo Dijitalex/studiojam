@@ -257,9 +257,10 @@ MonoBehaviour:
   musicSource: {fileID: 590861210}
   sfxSource: {fileID: 1937726671}
   background: {fileID: 0}
-  submit: {fileID: 0}
+  submit: {fileID: 8300000, guid: a080b9958aa38f0478a7abfa93f1f259, type: 3}
   win: {fileID: 0}
-  lose: {fileID: 0}
+  lose: {fileID: 8300000, guid: 0dd32872bd6cce245902f010880dae13, type: 3}
+  buttonClick: {fileID: 8300000, guid: ca6cbf59858ee3541b0b36362d1e65b7, type: 3}
 --- !u!4 &513137135
 Transform:
   m_ObjectHideFlags: 0
