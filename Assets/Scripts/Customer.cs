@@ -28,8 +28,12 @@ public class Customer : MonoBehaviour
     [SerializeField] private Sprite food5Sprite;
     [SerializeField] private Sprite food6Sprite;
 
-    public const float basePatience = 10f;
-    private float currentPatience;
+    public int minOrders = 1;
+    public int maxOrders = 3;
+    public Order[] allowedOrders;
+
+    public float basePatience;
+    public float currentPatience;
     private bool served = false;
     public List<Order> getOrder() => orders;
     public float getPatience() => basePatience * (1 + (orders.Count - 1) * 0.5f);
@@ -45,17 +49,32 @@ public class Customer : MonoBehaviour
             { Order.Food6, food6Sprite }
         };
 
+    }
+
+    private void GenerateOrders()
+    {
         //Generate 1-3 items for customer order
-        int numOrders = Random.Range(1, 4);
+        int numOrders = Random.Range(minOrders, maxOrders + 1);
         for (int i = 0; i < numOrders; i++)
         {
-            Order randomOrder = (Order)Random.Range(0, System.Enum.GetValues(typeof(Order)).Length);
+            int randIndex = Random.Range(0, allowedOrders.Length);
+            Order randomOrder = allowedOrders[randIndex];
             orders.Add(randomOrder);
         }
         LayoutOrder();
 
         currentPatience = getPatience();
         UpdatePatienceBar();
+    }
+
+    public void Setup(int min, int max, Order[] allowed, float baseP)
+    {
+        minOrders = min;
+        maxOrders = max;
+        allowedOrders = allowed;
+        basePatience = baseP;
+
+        GenerateOrders();
     }
 
     private void Update()

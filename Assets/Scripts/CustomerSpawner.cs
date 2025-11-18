@@ -9,15 +9,22 @@ public class CustomerSpawner : MonoBehaviour
 
     public GameObject customerPrefab;
     public Transform canvas;
-    [SerializeField] public float spawnInterval = 5f;
 
+    //Customer Values
     public int customerCount = 0;
     public int maxCustomerCount = 5;
+    [SerializeField] public float spawnInterval = 5f;
     [SerializeField] private float timer = 0f;
     [SerializeField] private float startX = 0f;
     [SerializeField] private float startY = -150f;
     [SerializeField] private float customerSpacing = 170f;
     public List<GameObject> customers = new List<GameObject>();
+
+    //Difficulty Values
+    public int minOrders = 1;
+    public int maxOrders = 2;
+    public Order[] allowedOrders;
+    public float customerBasePatience = 10f;
 
     private void Awake()
     {
@@ -28,7 +35,7 @@ public class CustomerSpawner : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     void Update()
     {
@@ -59,6 +66,7 @@ public class CustomerSpawner : MonoBehaviour
         Customer customerScript = newCustomer.GetComponent<Customer>();
         if (customerScript != null)
         {
+            customerScript.Setup(minOrders, maxOrders, allowedOrders, customerBasePatience);
             List<Order> orders = customerScript.getOrder();
             TextMeshProUGUI orderText = newCustomer.GetComponentInChildren<TextMeshProUGUI>();
 
