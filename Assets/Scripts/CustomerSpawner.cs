@@ -7,7 +7,7 @@ public class CustomerSpawner : MonoBehaviour
 {
     public static CustomerSpawner Instance { get; private set; }
 
-    public GameObject customerPrefab;
+    public GameObject[] customerPrefab;
     public Transform canvas;
 
     //Customer Values
@@ -51,7 +51,8 @@ public class CustomerSpawner : MonoBehaviour
 
     private void SpawnCustomer()
     {
-        GameObject newCustomer = Instantiate(customerPrefab, canvas);
+        int randomIndex = Random.Range(0, customerPrefab.Length);
+        GameObject newCustomer = Instantiate(customerPrefab[randomIndex], canvas);
         RectTransform rt = newCustomer.GetComponent<RectTransform>();
         customerCount++;
         customers.Add(newCustomer);
